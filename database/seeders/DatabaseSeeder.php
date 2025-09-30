@@ -30,17 +30,17 @@ class DatabaseSeeder extends Seeder
                 'password' => Hash::make('12345.An'),
             ]
         );
-		
-		User:create (
+
+		User::create (
 			[
 			'name' => 'Lorena María',
 			'email' => 'lore@gmail.com',
 			'password' => Hash::make('12345.Lore'),
 			]
-		
+
 		);
-		
-		
+
+
         User::factory(5)->create();
 
         Producto_temp::factory(50)->create();

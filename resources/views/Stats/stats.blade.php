@@ -37,18 +37,6 @@
                     </div>
 
                     <ul class="prodList">
-                        {{--  <li class="prod">
-                              <span class="prod_name">Nombre del</span>
-                              <span class="number">50</span>
-                          </li>
-                          <li class="prod">
-                              <span class="prod_name">Nombre del Producto</span>
-                              <span class="number">50</span>
-                          </li>
-                          <li class="prod">
-                              <span class="prod_name">Nom</span>
-                              <span class="number">50</span>
-                          </li>--}}
 
                         @foreach($bestSellers as $item)
 

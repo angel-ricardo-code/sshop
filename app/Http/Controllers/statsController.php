@@ -109,7 +109,8 @@ class statsController extends Controller
 
             SELECT p.nombre, c.stock FROM producto p, casi_agotados c
             WHERE p.id = c.id_producto AND p.id_usuario = $user
-            ORDER BY c.stock ASC;
+            ORDER BY c.stock ASC
+            LIMIT 5;
         ");
 
         return view('Stats.stats', [
@@ -158,17 +159,29 @@ class statsController extends Controller
         ");
         } elseif ($stat = 'producto-lowStock') {
             $mssg = "Productos casi agotados.";
+
             $result = DB::select("
 
-          WITH ventas_semanales AS (
-             SELECT id_producto, (SUM(cantidad)/4) AS cantidad_semanal FROM user_ventas($user) as v
-             WHERE EXTRACT( YEAR FROM v.created_at) = EXTRACT(YEAR FROM CURRENT_DATE) AND EXTRACT(MONTH FROM v.created_at) = EXTRACT(MONTH FROM CURRENT_DATE)
-             GROUP BY id_producto
-            ),
+        WITH ventas_semanales AS (
 
-            casi_agotados AS (
-            SELECT inventario.id_producto, stock FROM user_inventario($user) as inventario, ventas_semanales
-            WHERE inventario.id_producto = ventas_semanales.id_producto AND stock < cantidad_semanal*0.60 AND stock > 0
+        SELECT id_producto, AVG(cantidad) as prom_semanal, EXTRACT( WEEK FROM created_at ) as week, EXTRACT( YEAR FROM created_at ) as year
+        FROM ventas
+        GROUP BY id_producto, EXTRACT( YEAR FROM created_at ), EXTRACT( WEEK FROM created_at )
+        ORDER BY id_producto, year, week
+        ),
+
+        prom_semanal AS (
+
+            SELECT id_producto, AVG(v.prom_semanal) FROM ventas_semanales v
+            GROUP BY id_producto
+
+        )
+
+
+
+         , casi_agotados AS (
+            SELECT DISTINCT(inventario.id_producto), stock FROM user_inventario($user) as inventario, prom_semanal p
+            WHERE inventario.id_producto = p.id_producto AND stock < p.avg*0.60 AND inventario.stock > 0
             )
 
             SELECT p.nombre, c.stock as num FROM producto p, casi_agotados c
