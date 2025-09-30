@@ -33,7 +33,7 @@ class Venta_tempFactory extends Factory
 
                 return $precio + $rand;
             },
-            'created_at' => $this->faker->dateTimeBetween('-1 year', 'now')
+            'created_at' => $this->faker->dateTimeBetween('-3 year', 'now')
 
         ];
     }

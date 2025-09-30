@@ -2,10 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Canlendar;
 use App\Models\Producto_temp;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Venta_temp;
+use Carbon\Month;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -41,11 +43,17 @@ class DatabaseSeeder extends Seeder
 		);
 
 
-        User::factory(5)->create();
+        for ($i = 1; $i <= 12; $i++) {
+            Canlendar::create(
+                [
+                    'id' => intval($i),
+                ]
+            );
+        }
 
         Producto_temp::factory(50)->create();
 
         Venta_temp::factory(5000)->create();
-        Venta_temp::factory(50)->create();
+        Venta_temp::factory(500)->create();
     }
 }
