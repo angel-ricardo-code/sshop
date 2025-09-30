@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="147" height="135" viewBox="0 0 147 135">
+  <defs>
+    <clipPath id="clip-Web_1920_1">
+      <rect width="147" height="135"/>
+    </clipPath>
+  </defs>
+  <g id="Web_1920_1" data-name="Web 1920 – 1" clip-path="url(#clip-Web_1920_1)">
+    <rect width="147" height="135" fill="#fff"/>
+    <rect id="Rectángulo_1" data-name="Rectángulo 1" width="110" height="103" rx="13" transform="translate(19 14)" fill="#fff"/>
+    <path id="Rectángulo_1_-_Contorno" data-name="Rectángulo 1 - Contorno" d="M13,6a7.008,7.008,0,0,0-7,7V90a7.008,7.008,0,0,0,7,7H97a7.008,7.008,0,0,0,7-7V13a7.008,7.008,0,0,0-7-7H13m0-6H97a13,13,0,0,1,13,13V90a13,13,0,0,1-13,13H13A13,13,0,0,1,0,90V13A13,13,0,0,1,13,0Z" transform="translate(19 14)" fill="#010000"/>
+    <text id="_sshop." data-name="
+sshop." transform="translate(38 51)" font-size="23" font-family="MicrosoftYaHei-Bold, Microsoft YaHei" font-weight="700"><tspan x="0" y="24"></tspan><tspan x="0" y="54">sshop.</tspan></text>
+    <path id="Línea_1" data-name="Línea 1" d="M0,36a3,3,0,0,1-3-3V0A3,3,0,0,1,0-3,3,3,0,0,1,3,0V33A3,3,0,0,1,0,36Z" transform="translate(34.5 27.5)"/>
+    <path id="Línea_5" data-name="Línea 5" d="M0,50a3,3,0,0,1-3-3V0A3,3,0,0,1,0-3,3,3,0,0,1,3,0V47A3,3,0,0,1,0,50Z" transform="translate(68.5 27.5)"/>
+    <path id="Línea_8" data-name="Línea 8" d="M0,31a3,3,0,0,1-3-3V0A3,3,0,0,1,0-3,3,3,0,0,1,3,0V28A3,3,0,0,1,0,31Z" transform="translate(90.5 27.5)"/>
+    <path id="Línea_2" data-name="Línea 2" d="M0,31a3,3,0,0,1-3-3V0A3,3,0,0,1,0-3,3,3,0,0,1,3,0V28A3,3,0,0,1,0,31Z" transform="translate(45.5 27.5)"/>
+    <path id="Línea_6" data-name="Línea 6" d="M0,58a3,3,0,0,1-3-3V0A3,3,0,0,1,0-3,3,3,0,0,1,3,0V55A3,3,0,0,1,0,58Z" transform="translate(79.5 27.5)"/>
+    <path id="Línea_9" data-name="Línea 9" d="M0,58a3,3,0,0,1-3-3V0A3,3,0,0,1,0-3,3,3,0,0,1,3,0V55A3,3,0,0,1,0,58Z" transform="translate(101.5 27.5)"/>
+    <path id="Línea_3" data-name="Línea 3" d="M0,56a3,3,0,0,1-3-3V0A3,3,0,0,1,0-3,3,3,0,0,1,3,0V53A3,3,0,0,1,0,56Z" transform="translate(56.5 27.5)"/>
+    <path id="Línea_4" data-name="Línea 4" d="M0,60a3,3,0,0,1-3-3V0A3,3,0,0,1,0-3,3,3,0,0,1,3,0V57A3,3,0,0,1,0,60Z" transform="translate(90.5 27.5)"/>
+    <path id="Línea_7" data-name="Línea 7" d="M0,63a3,3,0,0,1-3-3V0A3,3,0,0,1,0-3,3,3,0,0,1,3,0V60A3,3,0,0,1,0,63Z" transform="translate(112.5 27.5)"/>
+  </g>
+</svg>

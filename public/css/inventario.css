@@ -1,0 +1,129 @@
+
+section {
+    overflow: scroll;
+}
+
+main .tableContainer {
+    margin: 0.5em;
+    border: rgba(110, 76, 62, 0.55) solid 2px;
+    border-radius: 1.2em;
+    width: fit-content;
+    margin-bottom: 4.5em;
+}
+
+.table {
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.6em;
+    width: 100%;
+
+}
+
+.descripcion {
+    min-width: 20ch;
+    max-height: 2ch;
+}
+
+.addProduct {
+    margin-bottom: 0.5em;
+}
+
+
+hr {
+    margin-top: 1em;
+    height: 0.3ch;
+    background: #6e4c3e;
+    border-radius: 1em;
+    opacity: 0.5;
+}
+
+
+.producto:nth-child(even) {
+    background: rgba(199, 163, 143, 0.36);
+}
+
+.producto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5em;
+    width: fit-content;
+}
+
+.producto span, .heading span {
+    max-width: 12ch;
+    min-width: 12ch;
+    overflow: hidden;
+    color: #6e4c3e;
+}
+
+.p_stock {
+    font-weight: bold;
+    opacity: 0.8;
+    padding-left: 0.5em;
+}
+
+.p_name {
+    position: sticky;
+    left: 1.5em;
+    backdrop-filter: blur(50px);
+    z-index: 1;
+}
+
+.checkboxCOlumn {
+    backdrop-filter: blur(50px);
+    position: sticky;
+    left: -0.1em;
+    width: 2ch;
+    max-width: 2ch;
+    z-index: 3;
+}
+
+
+.heading {
+    position: sticky;
+    background: white;
+    color: #9f6e5a;
+    padding-bottom: 0.61em;
+    padding-top: 0.6em;
+    padding-left: 1.9em;
+    margin-left: 0;
+    box-shadow: 0 0.2em 0.31em rgba(0, 0, 0, 0.18);
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    border-radius: 1em 1em 0 0;
+}
+
+.messages {
+    /*margin-bottom: 20vh;*/
+    opacity: 0.7;
+    margin-top: 0.5em;
+    display: flex;
+    justify-content: start;
+}
+
+.messge {
+    padding-left: 1em;
+    padding-right: 1em;
+    background: #6e4c3e;
+    color: #ffffff;
+    border: solid 2px #503a2d;
+    border-radius: 0.4em;
+
+}
+
+
+@media (max-width: 980px) {
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-size: 1rem;
+
+    }
+
+
+}

@@ -1,0 +1,129 @@
+
+.menu {
+    display: none;
+    z-index: -1;
+    position: absolute;
+    top: 3.1em;
+    right: 0.3em;
+    height: fit-content;
+    width: fit-content;
+    box-shadow: rgba(0, 0, 0, 0.25) 0 0.5em 0.5em;
+    background: white;
+    padding: 0.5em 1em 0;
+    padding-bottom: 1em;
+    border-radius: 0 0 0.5em 0.5em;
+    color: #6e4c3e;
+    font-size: 1.2em;
+}
+
+.show{
+    display: flex;
+    animation: showDown 0.1s ease-in-out;
+}
+
+.hide{
+    display: none;
+}
+
+@keyframes showDown {
+
+    from{
+        top: -1dvh;
+        right: 0.3em;
+        opacity: 0;
+        display: none;
+    }
+
+    to{
+        display: flex;
+        top: 3.1em;
+        right: 0.3em;
+        opacity: 1;
+    }
+
+}
+
+.menuOptions {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.menuOptions li {
+    font-size: 1.1em;
+    text-align: center;
+    display: grid;
+    place-content: center;
+}
+
+.menuOptions li a{
+    font-size: inherit;
+    display: grid;
+    place-content: center;
+    text-decoration: none;
+    color: white;
+    font-weight: normal;
+    background: red;
+    padding: 0 0.5em;
+    border-radius: 0.3em;
+}
+
+
+.temas_pick{
+    /*display: grid;*/
+    display: none;
+
+    place-content: center;
+    backdrop-filter: blur(5px);
+    position: fixed;
+    z-index: 20;
+    height: 100%;
+    width: 100%;
+}
+
+.temas_pick .container{
+    padding: 1em;
+    width: fit-content;
+    height: fit-content;
+}
+
+.container ul {
+    list-style: none;
+    color: #6e4c3e;
+}
+
+.container ul li{
+    display: flex;
+    gap: 0.5em;
+    align-items: center;
+    /*justify-content: space-evenly;*/
+}
+
+.sample {
+    display: flex;
+    gap: 0.1em;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.color{
+    min-height: 2ch;
+    height: 2ch;
+    min-width: 2ch;
+    width: 2ch;
+    border: solid 1px black;
+}
+
+.font_color{
+    background-color: #6e4c3e;
+}
+
+.background_color {
+    background-color: #e6f0fc;
+}
+
+.third_color {
+    background-color: rgba(179, 123, 102, 0.95);
+}
+

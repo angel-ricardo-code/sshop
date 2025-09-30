@@ -1,0 +1,103 @@
+main {
+    height: 100dvh;
+}
+
+.message {
+    width: 90%;
+    margin: 0 auto;
+    color: #996854;
+    font-size: 0.9em;
+}
+
+.message > a {
+    font-size: inherit;
+    color: #996854;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.animation {
+    justify-self: center;
+    height: 7em;
+    width: 7em;
+    position: relative;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.animation svg {
+    display: none;
+    animation: ease-in-out 2s tilt;
+    height: 100%;
+    width: 100%;
+    stroke: #6e4c3e;
+    object-fit: fill;
+    position: absolute;
+    top: 0;
+}
+
+@keyframes tilt {
+
+    0% {
+        transform: rotate(15deg) translateX(-50dvw);
+        opacity: 0.51;
+
+    }
+    25% {
+        transform: rotate(-15deg) scale(120%);
+        opacity: 1;
+
+    }
+    50% {
+        transform: rotate(30deg) scale(90%);
+        opacity: 0.51;
+
+
+    }
+    75% {
+        transform: rotate(-30deg) scale(120%);
+        opacity: 1;
+
+    }
+
+    100% {
+        transform: rotate(0deg) scale(90%);
+        opacity: 0.51;
+
+    }
+}
+
+.mensajes {
+    width: fit-content;
+    position: relative;
+    margin: 35% auto;
+    margin-bottom: 0;
+}
+
+.mensajes span {
+    animation: pulse linear 0.1s;
+    display: none;
+    color: #6e4c3e;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+@keyframes pulse {
+
+    from {
+        transform: translateX(50dvw);
+    }
+    to {
+    }
+
+}
+
+
+.mainHeading {
+    position: static;
+    top: 10%;
+    left: 0;
+}
+

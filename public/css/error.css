@@ -1,0 +1,63 @@
+main {
+    height: 100vh;
+}
+.container{
+    display: flex;
+    gap: 0.8em;
+    justify-content: flex-start;
+}
+.alert-icon{
+    width: 2.5em;
+    height: 2.5em;
+    aspect-ratio: 1/1;
+    display: block;
+    align-self: center;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+img.ico{
+    opacity: 0.8;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.messages{
+    text-align: start;
+    text-justify: newspaper;
+}
+
+.buttonContainer{
+    position: fixed;
+    bottom: 0.5em;
+    margin: 1em auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+
+
+
+
+@media (max-width: 980px) {
+
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-size: 1.05rem;
+
+    }
+
+
+    main{
+        width: 100dvw;
+        height: 100dvh;
+        padding: 0.5em;
+    }
+
+}

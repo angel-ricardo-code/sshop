@@ -1,0 +1,59 @@
+
+
+*, main, header{
+    font-size: 1.6rem;
+}
+
+.container {
+    width: 90%;
+    display: flex;
+        flex-direction: column;
+    margin: auto auto;
+    padding: 0.2em;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.container .productCard {
+    align-self: center;
+    border-radius: 0.8em;
+    padding: 0.5em 1em;
+    width: 95%;
+    display: flex;
+    flex-direction:column;
+    gap: 0.5em;
+}
+
+.field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form label {
+    font-weight: bold;
+    color: #9f6e5a;
+}
+
+input[type="number"]{
+    width: 15ch;
+}
+
+#cantidad{
+    width: 10ch;
+}
+
+input, select {
+    border:#9f6e5a solid 1px;
+    width: fit-content;
+    border-radius: 0.4em;
+    background: #f4ece8;
+}
+
+
+

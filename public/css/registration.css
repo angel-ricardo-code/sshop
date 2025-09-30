@@ -1,0 +1,120 @@
+
+body{
+}
+
+
+main{
+    height: 100dvh;
+    background: rgba(239, 147, 57, 0.27)
+
+}
+
+.mainHeading{
+    margin-top: 15vh;
+    color: white;
+    margin-bottom: 0;
+}
+
+.logo{
+    margin: 0 auto;
+    width: fit-content;
+    opacity: 0.8;
+
+    mix-blend-mode: multiply;
+}
+
+
+
+.repeat{
+    opacity: 0.5;
+}
+
+.loginContainer{
+
+    margin: 20vh auto;
+    width: 85%;
+    padding: 1em;
+}
+
+.loginContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.loginContainer label{
+    color: #6e4c3e;
+    font-weight: bold;
+}
+
+.loginContainer input{
+    text-align: center;
+    text-indent: 0.3em;
+    background: #f4ece8;
+    border-radius: 0.4em;
+    border:  solid 1.8px ;
+    color: #785344;
+}
+
+.field {
+    display: flex;
+    gap: 0.5em;
+    justify-content: space-evenly;
+}
+
+button{
+    font-size: 0.9em;
+}
+
+.buttonsContainer{
+    position: static;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+a {
+    font-size: inherit;
+}
+
+.field input{
+    max-width: 20ch;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 980px) {
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-size: 1.6rem;
+    }
+
+
+}

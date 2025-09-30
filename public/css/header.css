@@ -1,0 +1,45 @@
+
+
+.user-ico{
+    margin: 0 0.5em;
+
+}
+
+.tile_list {
+    margin: 0.5em auto;
+    padding-bottom: 0.3em;
+    width: 80%;
+    display: flex;
+    gap: 0.6em;
+    list-style: none;
+    justify-content: space-evenly;
+}
+
+.tile .ico{
+    height: 45px;
+    width: 45px;
+    stroke: #b4491f;
+}
+
+.tile{
+    cursor: pointer;
+    opacity: 0.5;
+    width: 6ch;
+    height: 6ch;
+    display: grid;
+    place-content: center;
+    background: rgba(199,163,143,0.36);
+    border-radius: 0.5em;
+}
+
+.user-tile{
+    margin-right: 0;
+    margin-left: 1em;
+    opacity: 1;
+    background: whitesmoke;
+}
+
+
+.active{
+    opacity: 1;
+}

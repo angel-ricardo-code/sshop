@@ -1,0 +1,90 @@
+
+
+TODO
+     un panel de usuario,
+     un panel de sugerencias de negocio;
+ En las ventas:
+        Agregar soporte para ventas múltiples
+        Agregar un panel de últimos movimientos
+    En las compras:
+        Agregar soporte para compras múltiples
+    Realizar el panel de usuarios
+        Un panel que permita cambiar el nombre de usuario, la contraseña, eliminar toda su informacion,
+
+
+
+TODO
+    Para el panel de sugerencias, necesitamos determinar qué cosas queremos sugerir:
+    -Alertas de bajo stock
+    -Notificaciones push/email
+    -Predicciones de demanda
+    -Productos con fechas próximas a caducar
+    -Demanda inexperada
+    -Productos estrella
+    -Descuentos inteligentes
+
+
+     Para manejar las alertas de bajo stock, es necesario establecer el min en un sistema min-max de manejo de inventario.
+
+
+     ¿Cómo se calcula ese min?
+        A través de un prociento arbitrario al punto de reorden ROP.
+
+     ¿Qué es el ROP?
+        Es un valor calculado para cada producto del stock, el cual establece la cantidad mínima que debes tener a la mano y ordenada antes de hacer un reaprovisionamiento.
+
+     ¿Cómo funciona?
+        Es un sistema de 3 contenedores, el primero ocupa el stock de venta normal, el segundo el stock de reserva de venta (cantidad tasa de uso para el tiempo de
+        reaprovisionamiento), y el tercero el contenedor de seguridad (brinda soporte a fallos en la cadena de reaprovisionamiento).
+        En un sistema así, inmediatamente después que se venda la última unidad del contendor de uso normal, se debe hacer una orden de reaprovisionamiento. De modo que
+        cuando el reapro llegue se llenan ambos contenedores. Esto funcionaría si el tiempo de reaprovisionamiento no fallara, es por esto que se usa el tercer conte
+        nedor, usualmente contiene el 50% del contenedor de uso normal, pero puede ajustarse según la experiencia.
+
+     ¿Cómo se calcula?
+        Se necesitan:
+            -cantidad de productos usados/vendidos en el mes
+            [
+
+            WITH (
+             SELECT id_producto, (SUM(cantidad)/4) AS cantidad_semanal FROM ventas
+             WHERE EXTRACT( YEAR FROM created_at) = EXTRACT(YEAR FROM CURRENT_DATE) AND EXTRACT(MONTH FROM created_at) = EXTRACT(MONTH FROM CURRENT_DATE)
+             GROUP BY id_producto;
+            )
+
+            SELECT inventario.id_producto, stock FROM inventario, ventas_semanales
+            WHERE inventario.id_producto = ventas_semanales.id_producto AND stock < cantidad_semanal;
+
+             --Para el número de ventas, solo reemplazar la SUM por el COUNT.
+             --Si un stock actual cae por debajo del de esta cantidad, el producto está al acabarse.
+            ]
+
+            -tiempo de reaprovisionamiento, una razón entre semanas/mes: de modo que cuatro semanas es 100%, y así...
+            [ Asumiremos 100% o 1]
+
+       Pasos:
+       1-Calcular la venta o uso de cada producto por semana -> determina el contenedor de uso normal.
+       2-Calcular la reserva, dadas las semanas de reaprob, se multiplica la razon mensual de esto por la cantidad de productos vendidos en el mes.
+
+       3-Calcular usando la Formula
+            ROP = (Ventas_mensuales x razon_reaprob) + stock_seguridad
+
+    Entonces el ROP será igual a la cantidad necesaria en los contenedores 2 y 3.
+
+
+     3-Productos de lento movimiento:
+        Productos que lleven sin ventas en un periodo de tiempo por definir, quizás pueda ser un tiempo ar
+        bitrario o hacerlo dinámico con un entrada del usuario.
+
+
+
+     -Comparación entre categorías
+     -Tasa de rotación de inventario (determinar cúales se mueven más, tiempo promedio que permanecen en el inventario)
+     -Margen de beneficio por producto y del inventario global.
+
+
+
+TODO
+
+
+
+

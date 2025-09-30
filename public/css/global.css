@@ -1,0 +1,189 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 1.0rem;
+    font-family: "Segoe UI", Roboto;
+
+}
+
+.mainHeading {
+    position: sticky;
+    left: 0.5em;
+    margin-top: 1em;
+    text-align: center;
+    font-size: 1.5em;
+    color: #9f6e5a;
+    margin-bottom: 1em;
+}
+
+body
+{
+    background: #0a0a0a;
+    display: grid;
+    place-content: center;
+}
+main{
+    background: white;
+    overflow: scroll;
+    overflow-x: hidden;
+
+}
+header{
+    background: white;
+}
+
+.pesos{
+    color: #9f6e5a;
+    font-size: 0.8em;
+}
+
+
+.errors svg{
+    max-width: 20px;
+    max-height: 20px;
+}
+
+header{
+    z-index: 5;
+    box-shadow: 0 0 10px black;
+    height: 4.3em;
+    position: sticky;
+    top: 0;
+}
+
+main{
+    padding: 0.5em;
+    height: 90dvh;
+    width: 30dvw;
+}
+
+.buttonsContainer{
+    z-index: 10;
+    position: fixed;
+    bottom: 0.5em;
+    backdrop-filter: blur(5%);
+    display: flex;
+    justify-content: space-around;
+    gap: 1.5em;
+    align-self: center;
+    width: fit-content;
+    margin: auto auto;
+}
+
+
+
+button {
+    padding: 0.5em 1.2em;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 1px 0.3em rgba(0, 0, 0, 0.14);
+    background: #cbd5e0;
+    font-weight: bold;
+}
+
+.cancelButton{
+    background: #6e4c3e;
+    color: #e4e4e4;
+}
+
+.submitButton{
+    background: #c7a38f;
+    color: #6e4c3e;
+    border: solid 1px #6e4c3e;
+}
+
+button a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.addProduct{
+    align-self: center;
+    height: 1em;
+    width: 1em;
+    background: rgba(110, 76, 62, 0.75);
+    border-radius: 0.1em;
+    box-shadow:  0 0 0.2em rgba(0, 0, 0, 0.4);
+    cursor: grab;
+    color: white;
+    display: grid;
+    place-content: center;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 3em;
+}
+input{
+    text-indent: 0.3em;
+}
+
+.errors{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: orangered;
+}
+
+.errors span {
+    font-size: 0.7em;
+    max-width: 80%;
+}
+
+.reset{
+    width: fit-content;
+    align-self: center;
+    background: transparent;
+    cursor: pointer;
+    box-shadow: none;
+}
+
+.refresh{
+    opacity: 0.5;
+    height: 2.5em;
+    width: 2.5em;
+    align-self: center;
+}
+.refresh:hover{
+    animation: circle 0.8s alternate;
+}
+
+@keyframes circle {
+    from  {
+
+        transform: rotate(0deg) scale(110%);
+    }
+    to {
+        transform: rotate(360deg) scale(90%);
+    }
+
+}
+
+.addProduct a {
+    text-decoration: none;
+    font-weight: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+@media (max-width: 980px) {
+
+    main{
+        width: 100dvw;
+        height: 100dvh;
+        font-size: 1.5rem;
+        padding: 0.5em 0.8em;
+    }
+
+}
+
+.container{
+    background: white;
+    border: #6e4c3e solid 2px;
+    border-radius: 0.8em;
+    padding: 0.65em;
+    box-shadow: rgba(0, 0, 0, 0.45) 0 0 0.5em;
+}
