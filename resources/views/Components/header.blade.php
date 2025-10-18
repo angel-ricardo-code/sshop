@@ -1,4 +1,5 @@
-<header>
+<header
+>
 
     <link rel="stylesheet" href="{{asset('css/header.css')}}">
     <link rel="stylesheet" href="{{asset('css/menu.css')}}">
@@ -135,7 +136,7 @@
     <div  id="profileMenu" class="menu">
         <ul class="menuOptions">
             <li>Perfil</li>
-            <li>Sugerencias</li>
+            <li><a href="/sugerencias" style="background: none; color: inherit">Sugerencias</a></li>
             <li id="temas_tile">Temas</li>
             <li>
                 <a href="/logout">

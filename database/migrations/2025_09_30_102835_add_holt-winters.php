@@ -21,7 +21,7 @@ return new class extends Migration
 
         month INT,
         total_vendido BIGINT,
-        years NUMERIC
+        years INT
 
         )
         AS
@@ -29,7 +29,7 @@ return new class extends Migration
             BEGIN
              RETURN QUERY
 
-                SELECT id as months, COALESCE(SUM(v.cantidad), 0) as total_vendido, EXTRACT(YEAR from v.created_at) as years FROM calendar
+                SELECT id as months, COALESCE(SUM(v.cantidad), 0) as total_vendido, year FROM calendar
                       LEFT JOIN user_ventas(user_id) v
                       ON calendar.id = EXTRACT(MONTH from v.created_at) AND id_producto = prod_id AND  EXTRACT(YEAR from v.created_at) = year
                 GROUP BY EXTRACT(MONTH from v.created_at), calendar.id, EXTRACT(YEAR from v.created_at)

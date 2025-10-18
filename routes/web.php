@@ -95,3 +95,5 @@ Route::get('/stats', function (\Illuminate\Http\Request $request) {
 
 
 });
+
+Route::get('/sugerencias' , [ \App\Http\Controllers\suggestions_controller::class, 'index'])->name('sugerencias');
