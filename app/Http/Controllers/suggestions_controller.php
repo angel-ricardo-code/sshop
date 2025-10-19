@@ -19,9 +19,17 @@ class suggestions_controller extends Controller
 
         //Obtener los resultados del primer año
 
-        $res = DB::select("SELECT * FROM holt_level($userID, 38, 2025)");
+        $res = DB::select("SELECT * FROM holt_level($userID, 20, 2023)");
 
-        dd($userID, $res);
+
+        $string = "";
+        foreach ($res as $level) {
+
+         $string .= " " .    $level->total_vendido;
+
+        }
+
+        dd($userID, $res,  $string);
 
     }
 }
