@@ -31,6 +31,7 @@ class suggestions_controller extends Controller
 
 
         $string = "";
+
         foreach ($res as $level) {
 
          $string .= " " .    $level->total_vendido;
