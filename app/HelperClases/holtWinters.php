@@ -15,10 +15,15 @@ class holtWinters
     private $years = [];
     private $seasonal_factor = [];
 
+    private $nivel_inicial = [];
+
+    private $tendencia_inicial = [];
+
     public function __construct($initialYear , $userID , $productID){
 
         $this->userID = $userID;
         $this->productID = $productID;
+
 
         $years = now()->year - $initialYear;
         $sum = $years;
@@ -30,8 +35,11 @@ class holtWinters
 
         }
 
+        $this->nivel_inicial = $this->get_nivelInicial($userID , $productID);
+        $this->tendencia_inicial = $this->get_tendenciaInicial($userID , $productID);
 
-     //   $this->ventas_iniciales = DB::select("SELECT * FROM holt_level($userID, 20, 2023)");
+
+        //   $this->ventas_iniciales = DB::select("SELECT * FROM holt_level($userID, 20, 2023)");
     }
 
 
@@ -95,13 +103,21 @@ class holtWinters
     public function get_factoresE( $year = 2023){
 
         $interval = now()->year - $initialYear;
+
         $data = self::getData($initialYear , $userID , $productID);
 
-        for ($i = 0; $i < $interval; $i++) {
+        $factores = array();
+        $j = 0;
+
+        for ($i = 1; $i < 12; $i++) {
 
         //Calcular el factor en i y agregarlo a un array
+        $factores[$j] = $data[$j]->total_vendido/( $this->nivel_inicial + ($i - 1)*$this->tendencia_inicial  );
+        $j++;
 
         }
+
+        return $factores;
     }
     public function pronosticar($meses, $initial_year)
     {
