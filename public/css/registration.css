@@ -5,13 +5,13 @@ body{
 
 main{
     height: 100dvh;
-    background: rgba(239, 147, 57, 0.27)
+    background: rgb(255, 253, 250)
 
 }
 
 .mainHeading{
     margin-top: 15vh;
-    color: white;
+    color: #6e4c3e;
     margin-bottom: 0;
 }
 

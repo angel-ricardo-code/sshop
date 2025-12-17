@@ -278,25 +278,29 @@ return new class extends Migration {
 
         ");
 
-
+        //Obtener la lista de productos para el usuario y los ids seleccionados
         DB::unprepared("
 
-        DROP FUNCTION IF EXISTS user_productos(INT);
+        DROP FUNCTION IF EXISTS user_productos(INT,INT[]);
 
-         CREATE OR REPLACE FUNCTION user_productos(user_id INT)
+         CREATE OR REPLACE FUNCTION user_productos(user_id INT, productos_id INT[] )
          RETURNS TABLE
          (
-         id_producto BIGINT,
+           id_producto BIGINT,
            nombre TEXT,
-           categoria TEXT
+           categoria TEXT,
+           descripcion TEXT,
+           precio_compra INT,
+           precio_venta INT,
+           stock INT
          )
          AS
          $$
           BEGIN
             RETURN QUERY
-            SELECT p.id, p.nombre, p.categoria
-            FROM producto p
-            WHERE p.id_usuario = user_id;
+            SELECT p.id, p.nombre, p.categoria, p.descripcion, p.precio_compra, p.precio_venta, i.stock as stock
+            FROM producto p, inventario i
+            WHERE (p.id_usuario = user_id AND p.id = ANY(productos_id)) AND p.id = i.id_producto;
           END;
          $$
          LANGUAGE plpgsql;

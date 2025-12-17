@@ -33,7 +33,10 @@ class inventario_controller extends Controller
         }
 
         if($action == 'edit'){
-            dd("Editando productos");
+
+//            session('ids', $selected);
+            //dd('eiasdfa');
+            return redirect()->route('producto.editar', ['ids' => $selected])->with('ids',$selected);
         }
 
 
@@ -57,6 +60,35 @@ class inventario_controller extends Controller
         if ($response == 'cancel') {
             return redirect()->route('inventario');
         }
+
+    }
+
+    public function edit(Request $request){
+
+        $id_user = $request->user()->id;
+
+        $id_productos = [];
+
+        foreach (session('ids') as $id){
+            $id_productos[] = intval($id);
+        }
+
+
+
+        //Recuperar la info de los productos,
+        $products = DB::select("SELECT * FROM user_productos($id_user , $id_productos )");
+
+        dd($products);
+
+
+        //Retornar la vista, con los productos que hemos recuperado desde manage
+
+        return view('Productos.editar')->with('ids',$request->input('selected'));
+
+    }
+
+
+    public function productos_update(Request $request){
 
     }
 

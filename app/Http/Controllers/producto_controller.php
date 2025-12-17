@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Producto_temp;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class producto_controller extends Controller
 {
@@ -24,7 +25,6 @@ class producto_controller extends Controller
     {
 
         //Autorizar la operación. Pendiente
-
 
 
         $action = $request->input('action');
@@ -76,8 +76,25 @@ class producto_controller extends Controller
     {
     }
 
-    public function edit($id)
+    public function edit(Request $request)
     {
+        if (session('ids') == null)
+        {
+            return redirect()->back();
+        }
+
+        //Capturar la informaci'on de los prodcutos seleccionados
+        $user = $request->user()->id;
+        $pgArray = '{' . implode(',',  session('ids')) . '}';
+
+
+        //Buscamos los productos
+        $productos = DB::select("SELECT * FROM user_productos(?, ?::integer[] )  ", [ $user, $pgArray]);
+
+
+        //Hacer return de la vista de edición
+        return view('productos.editar')->with('productos', session('ids'));
+
     }
 
     public function update(Request $request, $id)

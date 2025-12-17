@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Agregando productos</title>
+    <title>Editando...</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height">
     <link rel="stylesheet" href="{{asset('css/compras.css')}}">
     <link rel="stylesheet" href="{{asset('css/global.css')}}">
@@ -12,17 +12,20 @@
 
 <x-header></x-header>
 <main>
-    <h1 class="mainHeading">Agregando productos:</h1>
+    <h1 class="mainHeading">Editando productos:</h1>
+
+
 
     <div class="container">
         <form class="product_form" id="product_form" action="/agregar-productos" method="post">
             @csrf
 
 
-            @for($i =0 ; $i < 1; $i++)
+            @for($i =0 ; $i <  sizeof($productos); $i++)
 
                 <x-new_producto>
                     <x-slot:i>{{$i}}</x-slot:i>
+                    <x-slot:productos>{{dd($productos[$i])}}</x-slot:productos>
                 </x-new_producto>
 
             @endfor

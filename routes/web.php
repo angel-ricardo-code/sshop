@@ -33,6 +33,12 @@ Route::post('/agregar-productos', [\App\Http\Controllers\producto_controller::cl
 Route::get('/inventario', [\App\Http\Controllers\inventario_controller::class, 'index'])->name('inventario')->middleware(\App\Http\Middleware\gustomMiddleware::class);
 Route::post('/inventario', [inventario_controller::class, 'manage'])->middleware(\App\Http\Middleware\gustomMiddleware::class);
 
+Route::get('/editar-productos', [\App\Http\Controllers\producto_controller::class, 'edit'])
+            ->middleware(\App\Http\Middleware\gustomMiddleware::class)
+            ->name('producto.editar');
+Route::post('/editar-productos', [inventario_controller::class, 'update'])->name('producto.update')->middleware(\App\Http\Middleware\gustomMiddleware::class);
+
+
 //Ventas
 Route::get('/venta', [venta_controller::class, 'create'])->name('venta.create')->middleware(\App\Http\Middleware\gustomMiddleware::class);
 Route::post('/venta', [venta_controller::class, 'store'])->name('venta.store')->middleware(\App\Http\Middleware\gustomMiddleware::class);
@@ -67,7 +73,6 @@ Route::post('/login', [register_controller::class, 'login'])->name('login');
 Route::get('/logout', [\App\Http\Controllers\register_controller::class, 'logout'])->name('logout');
 
 
-Route::view('/test-feat', 'confirmarCOPIA');
 Route::get('/stats', function (\Illuminate\Http\Request $request) {
 
 

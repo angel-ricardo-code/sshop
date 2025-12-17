@@ -58,7 +58,6 @@
                 </div>
 
             </div>
-
             <div class="ganancias">
                 <h2>Aportan más</h2>
                 <div class="resultados">
@@ -134,9 +133,6 @@
             </div>
 
         </div>
-    </section>
-
-    <section class="categorias">
     </section>
 
 </main>

@@ -1,0 +1,6 @@
+Para editar los productos, primero debemos recuperar correctamente la información desde la
+tabla de inventario de la información para cada producto
+
+Pendiente:
+    -Agregar un controlador para manejar la petición de editar
+
