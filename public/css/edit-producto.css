@@ -1,0 +1,8 @@
+input {
+    width: fit-content;
+    max-width: 20ch;
+}
+
+input[type = "number"]{
+    width: 10ch;
+}

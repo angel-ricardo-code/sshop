@@ -93,7 +93,7 @@ class producto_controller extends Controller
 
 
         //Hacer return de la vista de edición
-        return view('productos.editar')->with('productos', session('ids'));
+        return view('productos.editar')->with('productos', $productos);
 
     }
 

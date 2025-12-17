@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+@php $i = 0;
+@endphp
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,29 +8,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height">
     <link rel="stylesheet" href="{{asset('css/compras.css')}}">
     <link rel="stylesheet" href="{{asset('css/global.css')}}">
+    <link rel="stylesheet" href="{{asset('css/edit-producto.css')}}">
 
 </head>
 <body>
 
 <x-header></x-header>
-<main>
+<main style="font-size: 0.9em">
     <h1 class="mainHeading">Editando productos:</h1>
 
 
 
-    <div class="container">
+    <div class="container" style="font-size: 0.8em">
         <form class="product_form" id="product_form" action="/agregar-productos" method="post">
             @csrf
 
 
-            @for($i =0 ; $i <  sizeof($productos); $i++)
+            @foreach( $productos as $producto)
 
-                <x-new_producto>
+
+                <x-producto>
                     <x-slot:i>{{$i}}</x-slot:i>
-                    <x-slot:productos>{{dd($productos[$i])}}</x-slot:productos>
-                </x-new_producto>
+                    <x-slot:nombre>{{$producto->nombre}}</x-slot:nombre>
+                    <x-slot:stock>{{$producto->stock}}</x-slot:stock>
+                    <x-slot:precio_venta>{{$producto->precio_venta}}</x-slot:precio_venta>
+                    <x-slot:precio_compra>{{$producto->precio_compra}}</x-slot:precio_compra>
+                    <x-slot:categoria>{{$producto->categoria}}</x-slot:categoria>
+                </x-producto>
 
-            @endfor
+                <hr>
+
+                @php $i++ @endphp
+
+            @endforeach
 
 
             <button  type="reset" class="reset">
@@ -40,7 +52,7 @@
     </div>
     <div class="buttonsContainer">
         <button class="cancelButton" type="submit" name="action" form="product_form" value="cancel">Cancelar</button>
-        <button class="submitButton" type="submit" form="product_form" name="action" value="add">Agregar</button>
+        <button class="submitButton" type="submit" form="product_form" name="action" value="add">Actualizar</button>
     </div>
 
 </main>
