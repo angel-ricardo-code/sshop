@@ -20,12 +20,11 @@ RUN if [ -f vite.config.js ]; then \
     [ -f public/build/.placeholder ] || printf "placeholder" > public/build/.placeholder
 
 ### Stage 2: Composer builder - install PHP dependencies
-FROM composer:2 AS composer_builder
+# Use the official PHP CLI image as builder so docker-php-ext-install is available
+FROM php:8.2-cli AS composer_builder
 WORKDIR /app
 
-# Install system packages and PHP extensions required by some Composer packages
-# (pdo_pgsql, intl, zip, mbstring). The composer base image is Debian-based so we
-# use apt-get and docker-php-ext-install.
+# Install system packages, PHP extensions and Composer
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libzip-dev \
     zlib1g-dev \
@@ -33,8 +32,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libpq-dev \
     git \
     unzip \
+    curl \
     && docker-php-ext-install pdo pdo_pgsql zip intl mbstring \
-    && apt-get purge -y --auto-remove \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && apt-get purge -y --auto-remove curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy composer files and install vendors
