@@ -36,7 +36,10 @@ Route::post('/inventario', [inventario_controller::class, 'manage'])->middleware
 Route::get('/editar-productos', [\App\Http\Controllers\producto_controller::class, 'edit'])
             ->middleware(\App\Http\Middleware\gustomMiddleware::class)
             ->name('producto.editar');
-Route::post('/editar-productos', [inventario_controller::class, 'update'])->name('producto.update')->middleware(\App\Http\Middleware\gustomMiddleware::class);
+Route::post('/editar-productos', [\App\Http\Controllers\producto_controller::class, 'update'])
+    ->middleware(\App\Http\Middleware\gustomMiddleware::class)
+    ->name('producto.update');
+
 
 
 //Ventas

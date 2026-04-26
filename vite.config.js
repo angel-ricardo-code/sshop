@@ -10,4 +10,12 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    // Build to public/build so the compiled assets can be served as static files
+    // (Vercel will use the `public` folder as the output directory).
+    build: {
+        manifest: true,
+        outDir: 'public/build',
+        // keep other files in public (don't empty it)
+        emptyOutDir: false,
+    },
 });

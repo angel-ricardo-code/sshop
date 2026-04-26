@@ -6,3 +6,12 @@ input {
 input[type = "number"]{
     width: 10ch;
 }
+
+.errors {
+    justify-content: center;
+    align-items: center;
+    margin: 0.5em auto;
+    text-align: left;
+    text-indent: 0.5em;
+    font-size: 1.5em;
+}

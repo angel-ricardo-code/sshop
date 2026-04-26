@@ -1,6 +1,7 @@
 <div class="productCard">
     <div class="field">
         <label for="{{"nombre[".$i."]"}}">Nombre</label>
+        <input type="hidden" name="{{"productos[" . $i . "][id]"}}" value="{{$id}}">
         <input type="text" name="{{"productos[" . $i . "][nombre]"}}"
                id="{{"nombre[".$i."]"}}"
                value="{{$nombre ?? null}}">
@@ -48,7 +49,8 @@
 
         <select name="{{"productos[" . $i . "][categoria]"}}"
                 id="{{"categoria[".$i."]"}}"
-                value="{{$categoria ?? null}}"
+{{--                value="{{$categoria ?? null}}--}}
+                "
                 >
             <option value="Comestible" {{ $categoria == "Comestible" ? "selected" : "" }}>Comestibles</option>
             <option value="Gastables" {{ $categoria == "Gastables" ?"selected" : "" }}>Gastables</option>

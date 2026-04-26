@@ -14,10 +14,10 @@
 
     <h1 class="mainHeading">Inventario</h1>
 
-    @if(session('messages'))
+    @if($messages)
         <div class="messages">
 
-            <div class="messge">{{session('messages')}}</div>
+            <div class="messge">{{$messages}}</div>
         </div>
     @endif
 
