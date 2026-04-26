@@ -23,6 +23,20 @@ RUN if [ -f vite.config.js ]; then \
 FROM composer:2 AS composer_builder
 WORKDIR /app
 
+# Install system packages and PHP extensions required by some Composer packages
+# (pdo_pgsql, intl, zip, mbstring). The composer base image is Debian-based so we
+# use apt-get and docker-php-ext-install.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libzip-dev \
+    zlib1g-dev \
+    libicu-dev \
+    libpq-dev \
+    git \
+    unzip \
+    && docker-php-ext-install pdo pdo_pgsql zip intl mbstring \
+    && apt-get purge -y --auto-remove \
+    && rm -rf /var/lib/apt/lists/*
+
 # Copy composer files and install vendors
 COPY composer.json composer.lock* ./
 RUN composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader --no-scripts --no-progress
