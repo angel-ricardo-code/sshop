@@ -1,45 +1,42 @@
-# Render configuration: web service (Docker), worker service (Docker) and a managed Postgres DB
-
 services:
-  # Single web service: Laravel handles frontend (static assets) and backend (API)
   - type: web
-    name: sshop
+    name: sshop-web
     env: docker
+    branch: main
     dockerfilePath: Dockerfile
-    plan: starter
-    instanceType: standard-1x
     autoDeploy: true
-    # Run deploy script (build assets, migrate, cache) then start php-fpm
-    startCommand: bash deploy.sh && php-fpm
+    region: oregon
+    plan: starter
+    # startCommand overrides the Dockerfile CMD to run PHP built-in server
+    startCommand: "php -S 0.0.0.0:$PORT -t public"
     envVars:
       - key: APP_ENV
         value: production
       - key: APP_DEBUG
         value: 'false'
       - key: APP_KEY
-        value: '<GENERATE_AND_PASTE_APP_KEY>'
+        generate: true
       - key: APP_URL
-        value: 'https://<YOUR_BACKEND_DOMAIN>'
+        value: https://your-app.onrender.com
       - key: DB_CONNECTION
         value: pgsql
       - key: DB_HOST
-        value: '<RENDER_PG_HOST>'
+        value: <DB_HOST>
       - key: DB_PORT
         value: '5432'
       - key: DB_DATABASE
-        value: '<RENDER_PG_DB>'
+        value: <DB_NAME>
       - key: DB_USERNAME
-        value: '<RENDER_PG_USER>'
+        value: <DB_USER>
       - key: DB_PASSWORD
-        value: '<RENDER_PG_PASSWORD>'
-      - key: QUEUE_CONNECTION
-        value: database
+        value: <DB_PASSWORD>
+    healthCheckPath: /
 
-databases:
-  # Optional: create a managed Postgres instance via Render. You can also provision an external DB and
-  # put its credentials in the service env vars above.
-  - name: sshop-db
-    engine: postgres
-    plan: starter
-    numDatabases: 1
-    # region: oregon
+# Optional: add a managed Postgres service here and link it from the web service
+# services:
+#   - type: managed-postgres
+#     name: sshop-db
+#     plan: starter
+#     region: oregon
+#     numNodes: 1
+#     databaseName: sshop
