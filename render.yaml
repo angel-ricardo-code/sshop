@@ -2,13 +2,13 @@ services:
   - type: web
     name: sshop-web
     env: docker
-    branch: main
+    branch: dev
     dockerfilePath: Dockerfile
     autoDeploy: true
     region: oregon
     plan: starter
-    # startCommand overrides the Dockerfile CMD to run PHP built-in server
-    startCommand: "php -S 0.0.0.0:$PORT -t public"
+    # startCommand overrides the Dockerfile CMD to run PHP built-in server with a router
+    startCommand: "php -S 0.0.0.0:$PORT -t public server.php"
     envVars:
       - key: APP_ENV
         value: production
