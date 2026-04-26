@@ -3,15 +3,21 @@
 FROM node:18-alpine AS node_builder
 WORKDIR /app
 
-# Copy package files first for caching
-COPY package.json package-lock.json* ./
-RUN npm ci --silent || npm install --no-audit --no-fund --silent
-
-# Copy everything (resources, vite config, etc.) so build can access assets
+# Copy the whole context first. We only run Node steps when this is a Vite-based
+# project (presence of vite.config.js). This avoids failing the build on projects
+# that don't use Node at all.
 COPY . .
 
-# Build assets into public/build
-RUN npm run build || true
+# If this repo uses Vite (vite.config.js exists), install deps and build assets.
+# Otherwise skip Node steps. Ensure public/build exists so later COPY succeeds.
+RUN if [ -f vite.config.js ]; then \
+      npm ci --silent || npm install --no-audit --no-fund --silent; \
+      npm run build || true; \
+    fi && \
+    mkdir -p public/build && \
+    # Ensure public/build contains at least one file so Docker can compute a checksum
+    # Some Docker versions/platforms fail when trying to checksum an empty directory.
+    [ -f public/build/.placeholder ] || printf "placeholder" > public/build/.placeholder
 
 ### Stage 2: Composer builder - install PHP dependencies
 FROM composer:2 AS composer_builder
